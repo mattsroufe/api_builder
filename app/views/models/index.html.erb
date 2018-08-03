@@ -1,14 +1,40 @@
 <h1>Models</h1>
 
-<ul>
-  <% @models.each do |model| %>
-    <li><%= model.name %></li>
-  <% end %>
-</ul>
+<% @models.each do |model| %>
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2"><%= model.name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% model.columns.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.type %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br><br>
+<% end %>
 
 <h2>New Model</h2>
 
 <%= form_for Model.new do |f| %>
+  <%= f.label :name, 'Model name' %>
   <%= f.text_field :name %>
+  <h3>Attributes</h3>
+  <% 5.times do %>
+    <label>Name</label>
+    <input type="text" name='model[attributes][][name]' />
+    <label>Type</label>
+    <select name='model[attributes][][type]'>
+      <option value="string">string</option>
+      <option value="integer">integer</option>
+      <option value="decimal">decimal</option>
+    </select>
+    <br><br>
+  <% end %>
   <%= f.submit %>
 <% end %>
