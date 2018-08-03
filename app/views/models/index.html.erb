@@ -1,0 +1,14 @@
+<h1>Models</h1>
+
+<ul>
+  <% @models.each do |model| %>
+    <li><%= model.name %></li>
+  <% end %>
+</ul>
+
+<h2>New Model</h2>
+
+<%= form_for Model.new do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
