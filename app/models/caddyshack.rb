@@ -1,0 +1,2 @@
+class Caddyshack < ApplicationRecord
+end

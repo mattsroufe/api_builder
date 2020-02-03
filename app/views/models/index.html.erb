@@ -16,6 +16,8 @@
       <% end %>
     </tbody>
   </table>
+  <p href="#">GET /<%= model.name.underscore.pluralize %></p>
+  <p>GET /<%= model.name.underscore.pluralize %>/<input type="text" style="width:20px" placeholder={id}></input></p>
   <br><br>
 <% end %>
 
@@ -38,3 +40,7 @@
   <% end %>
   <%= f.submit %>
 <% end %>
+
+<div id="output">
+  <%= @output %>
+</div>

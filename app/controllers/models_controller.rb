@@ -2,6 +2,7 @@ class ModelsController < ApplicationController
   def index
     Rails.application.eager_load!
     @models = ApplicationRecord.descendants
+    @output = {foo: 'bar', hello: 'world'}
   end
 
   def create
@@ -20,8 +21,7 @@ class ModelsController < ApplicationController
       key, type = attr.values
       [key, type].join(':') if key.present?
     end.compact.join(' ')
-    puts attributes_string
-    #`rails g model #{name} #{attributes_string}`
-    #`rake db:migrate`
+    `rails g model #{name} #{attributes_string}`
+    `rake db:migrate`
   end
 end
